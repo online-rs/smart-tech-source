@@ -313,6 +313,36 @@ export type Database = {
         }
         Relationships: []
       }
+      comparativos: {
+        Row: {
+          caracteristicas_comparadas: string[] | null
+          conclusao_comparativo: string | null
+          created_at: string
+          id: string
+          produtos_ids: string[]
+          titulo: string
+          updated_at: string
+        }
+        Insert: {
+          caracteristicas_comparadas?: string[] | null
+          conclusao_comparativo?: string | null
+          created_at?: string
+          id?: string
+          produtos_ids: string[]
+          titulo: string
+          updated_at?: string
+        }
+        Update: {
+          caracteristicas_comparadas?: string[] | null
+          conclusao_comparativo?: string | null
+          created_at?: string
+          id?: string
+          produtos_ids?: string[]
+          titulo?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       conversations: {
         Row: {
           assistance: string | null
@@ -628,6 +658,63 @@ export type Database = {
         }
         Relationships: []
       }
+      produtos: {
+        Row: {
+          asin: string | null
+          categoria_principal: string | null
+          created_at: string
+          data_atualizacao: string
+          descricao_curta: string | null
+          descricao_longa: string | null
+          especificacoes_tecnicas: Json | null
+          id: string
+          imagens_urls: string[] | null
+          nome: string
+          nota_media: number | null
+          numero_avaliacoes: number | null
+          palavras_chave_seo: string[] | null
+          preco_atual: number | null
+          subcategorias: string[] | null
+          url_amazon: string | null
+        }
+        Insert: {
+          asin?: string | null
+          categoria_principal?: string | null
+          created_at?: string
+          data_atualizacao?: string
+          descricao_curta?: string | null
+          descricao_longa?: string | null
+          especificacoes_tecnicas?: Json | null
+          id?: string
+          imagens_urls?: string[] | null
+          nome: string
+          nota_media?: number | null
+          numero_avaliacoes?: number | null
+          palavras_chave_seo?: string[] | null
+          preco_atual?: number | null
+          subcategorias?: string[] | null
+          url_amazon?: string | null
+        }
+        Update: {
+          asin?: string | null
+          categoria_principal?: string | null
+          created_at?: string
+          data_atualizacao?: string
+          descricao_curta?: string | null
+          descricao_longa?: string | null
+          especificacoes_tecnicas?: Json | null
+          id?: string
+          imagens_urls?: string[] | null
+          nome?: string
+          nota_media?: number | null
+          numero_avaliacoes?: number | null
+          palavras_chave_seo?: string[] | null
+          preco_atual?: number | null
+          subcategorias?: string[] | null
+          url_amazon?: string | null
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           age: number | null
@@ -672,6 +759,53 @@ export type Database = {
           whatsapp?: string | null
         }
         Relationships: []
+      }
+      reviews: {
+        Row: {
+          contras: string[] | null
+          created_at: string
+          depoimentos_reais: string[] | null
+          id: string
+          introducao: string | null
+          produto_id: string
+          pros: string[] | null
+          status: string
+          titulo_review: string
+          updated_at: string
+        }
+        Insert: {
+          contras?: string[] | null
+          created_at?: string
+          depoimentos_reais?: string[] | null
+          id?: string
+          introducao?: string | null
+          produto_id: string
+          pros?: string[] | null
+          status?: string
+          titulo_review: string
+          updated_at?: string
+        }
+        Update: {
+          contras?: string[] | null
+          created_at?: string
+          depoimentos_reais?: string[] | null
+          id?: string
+          introducao?: string | null
+          produto_id?: string
+          pros?: string[] | null
+          status?: string
+          titulo_review?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "reviews_produto_id_fkey"
+            columns: ["produto_id"]
+            isOneToOne: false
+            referencedRelation: "produtos"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       tarefas: {
         Row: {
